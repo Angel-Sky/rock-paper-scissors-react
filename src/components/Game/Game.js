@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import './Game.css';
 function Game() {
     const [userScore, setUserScore] = useState(0);
     const [computerScore, setComputerScore] = useState(0);
@@ -14,7 +14,7 @@ function Game() {
 
     const handleSelect = (e) => {
         e.preventDefault();
-        setUserChoice(e.target.innerText);
+        setUserChoice(e.target.alt);
     }
 
     const computerRandomChoice = () => {
@@ -22,20 +22,20 @@ function Game() {
     }
 
     const checkWhoWinsTheRound = (userChoice, computerChoice) => {
-        if (userChoice.toLowerCase() == 'rock' && computerChoice.toLowerCase() == 'rock' ||
-            userChoice.toLowerCase() == 'paper' && computerChoice.toLowerCase() == 'paper' ||
-            userChoice.toLowerCase() == 'scissors' && computerChoice.toLowerCase() == 'scissors') {
+        if ((userChoice.toLowerCase() === 'rock' && computerChoice.toLowerCase() === 'rock') ||
+            (userChoice.toLowerCase() === 'paper' && computerChoice.toLowerCase() === 'paper') ||
+            (userChoice.toLowerCase() === 'scissors' && computerChoice.toLowerCase() === 'scissors')) {
             setCurrentMessage('even');
             setUserChoice("");
-        } else if (userChoice.toLowerCase() == 'rock' && computerChoice.toLowerCase() == 'scissors' ||
-            userChoice.toLowerCase() == 'paper' && computerChoice.toLowerCase() == 'rock' ||
-            userChoice.toLowerCase() == 'scissors' && computerChoice.toLowerCase() == 'paper') {
+        } else if ((userChoice.toLowerCase() === 'rock' && computerChoice.toLowerCase() === 'scissors') ||
+            (userChoice.toLowerCase() === 'paper' && computerChoice.toLowerCase() === 'rock') ||
+            (userChoice.toLowerCase() === 'scissors' && computerChoice.toLowerCase() === 'paper')) {
             setCurrentMessage('Point for you!');
             setUserScore((prevScore) => prevScore + 1);
             setUserChoice("");
-        } else if (userChoice.toLowerCase() == 'rock' && computerChoice.toLowerCase() == 'paper' ||
-            userChoice.toLowerCase() == 'paper' && computerChoice.toLowerCase() == 'scissors' ||
-            userChoice.toLowerCase() == 'scissors' && computerChoice.toLowerCase() == 'rock') {
+        } else if ((userChoice.toLowerCase() === 'rock' && computerChoice.toLowerCase() === 'paper') ||
+            (userChoice.toLowerCase() === 'paper' && computerChoice.toLowerCase() === 'scissors') ||
+            (userChoice.toLowerCase() === 'scissors' && computerChoice.toLowerCase() === 'rock')) {
             setCurrentMessage('Point for the computer!');
             setComputerScore((prevScore) => prevScore + 1);
             setUserChoice("");
@@ -66,18 +66,19 @@ function Game() {
 
     return (
         <div className="container">
-            <h1>Game</h1>
+            <h1>Score</h1>
+            <p>You: {userScore}</p>
+            <p>Computer: {computerScore}</p>
             <Row>
                 {!endGame ? <>
                     <p>{currentMessage}</p>
-                    <Col lg={6} sm={12} >
-                        <Button variant="dark" onClick={handleSelect}>Rock</Button>
-                        <Button variant="dark" onClick={handleSelect}>Paper</Button>
-                        <Button variant="dark" onClick={handleSelect}>Scissors</Button>
+                    <h2>Rock, Paper, Scissors - you choose!</h2>
+                    <Col lg={8} sm={12} >
+                        <img src="/rock.png" alt="rock" onClick={handleSelect} />
+                        <img src="/paper.png" alt="paper" onClick={handleSelect} />
+                        <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
                     </Col>
-                    <Col lg={6} sm={12} >
-                        <p>Me: {userScore}</p>
-                        <p>Computer: {computerScore}</p>
+                    <Col lg={4} sm={12} >
                     </Col>
                 </> :
                     <>
