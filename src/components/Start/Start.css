@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+#main-heading {
+    font-family: 'Dancing Script', cursive;
+    padding-top: 15vh;
+    padding-bottom: 10vh;
+}
+
+.weapons {
+    padding-bottom: 30px;
+}
+
+#btn-start {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22pt;
+}
