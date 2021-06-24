@@ -7,3 +7,7 @@
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(40,158,233,1) 50%, rgba(2,0,36,1) 100%);
 }
+
+img {
+    width: 30vh;
+}

@@ -1,3 +1,11 @@
-img {
-    width: 30vh;
+#user-score {
+    margin-right: 20px;
+}
+
+.bold-score {
+    font-weight: bold;
+}
+
+#user-choices img:hover {
+    cursor: pointer;
 }

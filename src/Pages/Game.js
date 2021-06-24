@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Score from '../components/Game/Score';
 import InteractionMessages from '../components/Game/InteractionMessages';
 import GameOver from '../components/Game/GameOver';
@@ -75,11 +75,23 @@ function Game() {
                     <>
                         {!userHasSelected ?
                             <>
-                                <Col lg={8} sm={12} >
+                                <Col lg={8} sm={12} id="user-choices">
                                     <h2>Rock, Paper, Scissors - choose!</h2>
-                                    <img src="/rock.png" alt="rock" onClick={handleSelect} />
-                                    <img src="/paper.png" alt="paper" onClick={handleSelect} />
-                                    <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
+                                    <OverlayTrigger key={'rock'} placement={'top'} overlay={
+                                        <Tooltip id={`tooltip-${'top'}`}>Rock</Tooltip>
+                                    }>
+                                        <img src="/rock.png" alt="rock" onClick={handleSelect} />
+                                    </OverlayTrigger>
+                                    <OverlayTrigger key={'paper'} placement={'top'} overlay={
+                                        <Tooltip id={`tooltip-${'top'}`}>Paper</Tooltip>
+                                    }>
+                                        <img src="/paper.png" alt="paper" onClick={handleSelect} />
+                                    </OverlayTrigger>
+                                    <OverlayTrigger key={'scissors'} placement={'top'} overlay={
+                                        <Tooltip id={`tooltip-${'top'}`}>Scissors</Tooltip>
+                                    }>
+                                        <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
+                                    </OverlayTrigger>
                                 </Col>
                                 <Col lg={4} sm={12} >
                                     <h2>Computer chooses...</h2>

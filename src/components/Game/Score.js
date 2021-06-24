@@ -1,13 +1,21 @@
 import { Row } from 'react-bootstrap';
 
 function Score({ params }) {
-    console.log(params)
     return (
-        <Row>
+        <Row className="text-center">
             <h1>Score</h1>
             <div>
-                <span>You: {params.userScore >= 3 ? <span>3</span> : <span>{params.userScore}</span>}</span>
-                <span>Computer: {params.computerScore >= 3 ? <span>3</span> : <span>{params.computerScore}</span>}</span>
+                <span id="user-score">
+                    You: {params.userScore >= 3 ?
+                        <span className="bold-score">3</span> :
+                        <span className="bold-score">{params.userScore}</span>}
+                </span>
+                <span>
+                    Computer: {params.computerScore >= 3 ?
+                        <span className="bold-score">3</span> :
+                        <span className="bold-score">{params.computerScore}
+                        </span>}
+                </span>
             </div>
         </Row>
     )
