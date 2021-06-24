@@ -3,6 +3,7 @@ import { Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Game.css';
 import Score from './Score';
+import GameOver from './GameOver';
 
 function Game() {
     const [userScore, setUserScore] = useState(0);
@@ -13,7 +14,6 @@ function Game() {
     const [possibleАnswers] = useState(['rock', 'paper', 'scissors']);
     const [currentMessage, setCurrentMessage] = useState('');
     const [endGame, setEndGame] = useState(false);
-    const [winner, setWinner] = useState('');
 
     const handleSelect = (e) => {
         e.preventDefault();
@@ -84,18 +84,13 @@ function Game() {
                             <>
                                 <h2>The computer chose {computerChoice}</h2>
                                 <img src={"/" + computerChoice + '.png'} alt={computerChoice} />
+                                <p>{currentMessage}</p>
                             </>
                         }
                     </Col>
-                    <p>{currentMessage}</p>
 
                 </> :
-                    <>
-                        {winner}
-                        <Link to="/">
-                            <Button variant="dark">Start Over</Button>
-                        </Link>
-                    </>
+                    <GameOver params={userScore}/>
                 }
             </Row>
         </div>
