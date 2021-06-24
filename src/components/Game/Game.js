@@ -31,7 +31,6 @@ function Game() {
         e.preventDefault();
         setUserChoice("");
         setComputerChoice("");
-
         setUserChoice(e.target.alt);
         setComputerChoice(possibleАnswers[Math.floor(Math.random() * possibleАnswers.length)]);
         setUserHasSelected(true);
@@ -56,14 +55,17 @@ function Game() {
     }
 
     useEffect(() => {
-        checkWhoWinsTheRound();
-        if (refCompScore.current === 3 || refUserScore.current === 3) {
+        if (refCompScore.current >= 3 || refUserScore.current >= 3) {
             setEndGame(true);
+        } else {
+            checkWhoWinsTheRound();
         }
         setTimeout(() => {
             setUserHasSelected(false);
+            setUserChoice(""); //Causes unwanted re-rendering
+            setComputerChoice(""); //Causes unwanted re-rendering
         }, 2000);
-    }, [userChoice, computerChoice, endGame])
+    }, [endGame, userChoice, computerChoice])
 
     return (
         <div className="container">
@@ -84,7 +86,7 @@ function Game() {
                                     <img src="/animated-change.gif" alt="comp-choice" />
                                 </Col>
                             </> :
-                            <InteractionMessages userChoice={userChoice} computerChoice={computerChoice} currentMessage={currentMessage}/>
+                            <InteractionMessages userChoice={userChoice} computerChoice={computerChoice} currentMessage={currentMessage} />
                         }
                     </>
                     :

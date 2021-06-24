@@ -1,10 +1,10 @@
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function GameOver({ params }) {
+function GameOver({ userScore }) {
     return (
         <>
-            {params >= 3 ?
+            {userScore >= 3 ?
                 <p>You Win!</p> :
                 <p>Computer Wins!</p>
             }
