@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import './Game.css';
-import Score from './Score';
-import InteractionMessages from './InteractionMessages';
-import GameOver from './GameOver';
+import Score from '../components/Game/Score';
+import InteractionMessages from '../components/Game/InteractionMessages';
+import GameOver from '../components/Game/GameOver';
+import '../components/Game/Game.css';
 
 function Game() {
     const [userScore, setUserScore] = useState(0);
@@ -29,8 +29,8 @@ function Game() {
 
     const handleSelect = (e) => {
         e.preventDefault();
-        setUserChoice("");
-        setComputerChoice("");
+        // setUserChoice("");
+        // setComputerChoice("");
         setUserChoice(e.target.alt);
         setComputerChoice(possibleАnswers[Math.floor(Math.random() * possibleАnswers.length)]);
         setUserHasSelected(true);
@@ -61,9 +61,9 @@ function Game() {
             checkWhoWinsTheRound();
         }
         setTimeout(() => {
-            setUserHasSelected(false);
             setUserChoice(""); //Causes unwanted re-rendering
             setComputerChoice(""); //Causes unwanted re-rendering
+            setUserHasSelected(false);
         }, 2000);
     }, [endGame, userChoice, computerChoice])
 

@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
-import Start from './components/Start/Start'
-import Game from './components/Game/Game'
+import Start from './Pages/Start'
+import Game from './Pages/Game'
 
 function App() {
    return (
