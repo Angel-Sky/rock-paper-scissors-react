@@ -49,7 +49,9 @@ function Game() {
 
     useEffect(() => {
         checkWhoWinsTheRound();
-        userScore >= 3 || computerScore >= 3 ? setTimeout(() => {setEndGame(true)}, 2000) : setEndGame(false);
+        if (userScore >= 3 || computerScore >= 3) {
+            setEndGame(true);
+        }
         setTimeout(() => {
             setUserHasSelected(false);
         }, 2000);
@@ -57,40 +59,38 @@ function Game() {
 
     return (
         <div className="container">
-            <Score params={{userScore, computerScore}} />
+            <Score params={{ userScore, computerScore }} />
             <Row>
-                {!endGame ? <>
-                    <Col lg={8} sm={12} >
+                {!endGame ?
+                    <>
                         {!userHasSelected ?
                             <>
-                                <h2>Rock, Paper, Scissors - choose!</h2>
-                                <img src="/rock.png" alt="rock" onClick={handleSelect} />
-                                <img src="/paper.png" alt="paper" onClick={handleSelect} />
-                                <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
+                                <Col lg={8} sm={12} >
+                                    <h2>Rock, Paper, Scissors - choose!</h2>
+                                    <img src="/rock.png" alt="rock" onClick={handleSelect} />
+                                    <img src="/paper.png" alt="paper" onClick={handleSelect} />
+                                    <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
+                                </Col>
+                                <Col lg={4} sm={12} >
+                                    <h2>Computer chooses...</h2>
+                                    <img src="/animated-change.gif" alt="comp-choice" />
+                                </Col>
                             </> :
                             <>
-                                <h2>You chose {userChoice}</h2>
-                                <img src={"/" + userChoice + '.png'} alt={userChoice} />
-                            </>
-                        }
-                    </Col>
-                    <Col lg={4} sm={12} >
-                        {!userHasSelected ?
-                            <>
-                                <h2>Computer chooses...</h2>
-                                <img src="/animated-change.gif" alt="comp-choice" />
-                            </>
-                            :
-                            <>
-                                <h2>The computer chose {computerChoice}</h2>
-                                <img src={"/" + computerChoice + '.png'} alt={computerChoice} />
+                                <Col lg={8} sm={12} >
+                                    <h2>You chose {userChoice}</h2>
+                                    <img src={"/" + userChoice + '.png'} alt={userChoice} />
+                                </Col>
+                                <Col lg={4} sm={12} >
+                                    <h2>The computer chose {computerChoice}</h2>
+                                    <img src={"/" + computerChoice + '.png'} alt={computerChoice} />
+                                </Col>
                                 <p>{currentMessage}</p>
                             </>
                         }
-                    </Col>
-
-                </> :
-                    <GameOver params={userScore}/>
+                    </>
+                    :
+                    <GameOver params={userScore} />
                 }
             </Row>
         </div>
