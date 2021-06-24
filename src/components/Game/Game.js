@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import './Game.css';
 import Score from './Score';
 import GameOver from './GameOver';
@@ -14,6 +13,18 @@ function Game() {
     const [possibleАnswers] = useState(['rock', 'paper', 'scissors']);
     const [currentMessage, setCurrentMessage] = useState('');
     const [endGame, setEndGame] = useState(false);
+    const refUserScore = useRef(userScore);
+    const refCompScore = useRef(computerScore);
+
+    function updateUserScore(newScore) {
+        refUserScore.current = newScore;
+        setUserScore(newScore);
+    }
+
+    function updateCompScore(newScore) {
+        refCompScore.current = newScore;
+        setComputerScore(newScore);
+    }
 
     const handleSelect = (e) => {
         e.preventDefault();
@@ -33,23 +44,21 @@ function Game() {
         } else if ((userChoice === 'rock' && computerChoice === 'scissors') ||
             (userChoice === 'paper' && computerChoice === 'rock') ||
             (userChoice === 'scissors' && computerChoice === 'paper')) {
-            setUserScore(prevScore => prevScore + 1);
+            updateUserScore(userScore + 1)
             setCurrentMessage('Point for you!');
         } else if ((userChoice === 'rock' && computerChoice === 'paper') ||
             (userChoice === 'paper' && computerChoice === 'scissors') ||
             (userChoice === 'scissors' && computerChoice === 'rock')) {
-            setComputerScore(prevScore => prevScore + 1);
+            updateCompScore(computerScore + 1);
             setCurrentMessage('Point for the computer!');
         }
     }
 
-    // const checkGameOver = () => {
-    //     return userScore >= 3 || computerScore >= 3 ? setEndGame(true) : setEndGame(false);
-    // }
-
     useEffect(() => {
+        console.log(refCompScore.current)
+        console.log(refUserScore.current)
         checkWhoWinsTheRound();
-        if (userScore >= 3 || computerScore >= 3) {
+        if (refCompScore.current === 3 || refUserScore.current === 3) {
             setEndGame(true);
         }
         setTimeout(() => {
@@ -59,7 +68,7 @@ function Game() {
 
     return (
         <div className="container">
-            <Score params={{ userScore, computerScore }} />
+            <Score params={{ userScore: refUserScore.current, computerScore: refCompScore.current }} />
             <Row>
                 {!endGame ?
                     <>
