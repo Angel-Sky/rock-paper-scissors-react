@@ -16,7 +16,7 @@ function GameOver({ userScore }) {
                 </div>
             }
             <Link to="/">
-                <Button variant="dark">Start Over</Button>
+                <Button variant="dark" id="start-over-btn">Start Over</Button>
             </Link>
         </Col>
     )
