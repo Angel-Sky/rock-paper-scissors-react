@@ -70,12 +70,12 @@ function Game() {
     return (
         <div className="container">
             <Score params={{ userScore: refUserScore.current, computerScore: refCompScore.current }} />
-            <Row>
+            <Row id="game-board">
                 {!endGame ?
                     <>
                         {!userHasSelected ?
                             <>
-                                <Col lg={8} sm={12} id="user-choices">
+                                <Col lg={8} md={8} sm={12} className="text-center" id="user-choices">
                                     <h2>Rock, Paper, Scissors - choose!</h2>
                                     <OverlayTrigger key={'rock'} placement={'top'} overlay={
                                         <Tooltip id={`tooltip-${'top'}`}>Rock</Tooltip>
@@ -93,7 +93,7 @@ function Game() {
                                         <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
                                     </OverlayTrigger>
                                 </Col>
-                                <Col lg={4} sm={12} >
+                                <Col lg={4} md={4} sm={12} className="text-center" >
                                     <h2>Computer chooses...</h2>
                                     <img src="/animated-change.gif" alt="comp-choice" />
                                 </Col>

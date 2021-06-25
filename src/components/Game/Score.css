@@ -1,0 +1,11 @@
+#game-score {
+    padding-top: 30px;
+}
+
+#user-score {
+    margin-right: 20px;
+}
+
+.bold-score {
+    font-weight: bold;
+}

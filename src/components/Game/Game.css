@@ -1,11 +1,11 @@
-#user-score {
-    margin-right: 20px;
-}
-
-.bold-score {
-    font-weight: bold;
+#user-choices {
+    border-right: 1px solid white;
 }
 
 #user-choices img:hover {
     cursor: pointer;
+}
+
+#game-board {
+    margin-top: 30px;
 }

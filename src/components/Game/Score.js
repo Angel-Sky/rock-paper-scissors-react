@@ -1,8 +1,9 @@
 import { Row } from 'react-bootstrap';
+import './Score.css';
 
 function Score({ params }) {
     return (
-        <Row className="text-center">
+        <Row className="text-center" id="game-score">
             <h1>Score</h1>
             <div>
                 <span id="user-score">
