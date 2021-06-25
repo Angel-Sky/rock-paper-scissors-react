@@ -3,7 +3,8 @@ import { Col, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Score from '../components/Game/Score/Score';
 import InteractionMessages from '../components/Game/InteractionMessages/InteractionMessages';
 import GameOver from '../components/Game/GameOver/GameOver';
-import ComputerChooses from '../components/Game/ComputerChooses/ComputerChooses'
+import ComputerChooses from '../components/Game/ComputerChooses/ComputerChooses';
+import GoBackBtn from '../components/Game/GoBackBtn/GoBackBtn'
 import '../components/Game/Game.css';
 
 function Game() {
@@ -70,6 +71,7 @@ function Game() {
 
     return (
         <div className="container">
+            <GoBackBtn />
             <Score params={{ userScore: refUserScore.current, computerScore: refCompScore.current }} />
             <Row id="game-board">
                 {!endGame ?
