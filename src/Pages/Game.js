@@ -13,12 +13,13 @@ function Game() {
     const [userChoice, setUserChoice] = useState('');
     const [userHasSelected, setUserHasSelected] = useState(false);
     const [computerChoice, setComputerChoice] = useState('');
+    const [lastChoices, setLastChoices] = useState([{user: '', comp: ''}]);
     const [possibleАnswers] = useState(['rock', 'paper', 'scissors']);
     const [currentMessage, setCurrentMessage] = useState('');
     const [endGame, setEndGame] = useState(false);
     const refUserScore = useRef(userScore);
     const refCompScore = useRef(computerScore);
-
+    
     function updateUserScore(newScore) {
         refUserScore.current = newScore;
         setUserScore(newScore);
@@ -39,6 +40,10 @@ function Game() {
     }
 
     const checkWhoWinsTheRound = () => {
+        if (userChoice !== "" && computerChoice !== "") {
+            setLastChoices([{user: userChoice, comp: computerChoice}])
+        }
+
         if ((userChoice === 'rock' && computerChoice === 'rock') ||
             (userChoice === 'paper' && computerChoice === 'paper') ||
             (userChoice === 'scissors' && computerChoice === 'scissors')) {
@@ -62,9 +67,9 @@ function Game() {
         } else {
             checkWhoWinsTheRound();
         }
+        setUserChoice(""); //Causes unwanted re-rendering
+        setComputerChoice(""); //Causes unwanted re-rendering
         setTimeout(() => {
-            setUserChoice(""); //Causes unwanted re-rendering
-            setComputerChoice(""); //Causes unwanted re-rendering
             setUserHasSelected(false);
         }, 2000);
     }, [endGame, userChoice, computerChoice])
@@ -98,7 +103,7 @@ function Game() {
                                 </Col>
                                 <ComputerChooses />
                             </> :
-                            <InteractionMessages userChoice={userChoice} computerChoice={computerChoice} currentMessage={currentMessage} />
+                            <InteractionMessages userChoice={lastChoices[0].user} computerChoice={lastChoices[0].comp} currentMessage={currentMessage} />
                         }
                     </>
                     :
