@@ -3,6 +3,7 @@ import { Col, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Score from '../components/Game/Score/Score';
 import InteractionMessages from '../components/Game/InteractionMessages/InteractionMessages';
 import GameOver from '../components/Game/GameOver/GameOver';
+import ComputerChooses from '../components/Game/ComputerChooses/ComputerChooses'
 import '../components/Game/Game.css';
 
 function Game() {
@@ -93,10 +94,7 @@ function Game() {
                                         <img src="/scissors.png" alt="scissors" onClick={handleSelect} />
                                     </OverlayTrigger>
                                 </Col>
-                                <Col lg={4} md={4} sm={12} className="text-center" >
-                                    <h2>Computer chooses...</h2>
-                                    <img src="/animated-change.gif" alt="comp-choice" />
-                                </Col>
+                                <ComputerChooses />
                             </> :
                             <InteractionMessages userChoice={userChoice} computerChoice={computerChoice} currentMessage={currentMessage} />
                         }
