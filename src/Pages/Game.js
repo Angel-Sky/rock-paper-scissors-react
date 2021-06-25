@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { Col, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import Score from '../components/Game/Score';
-import InteractionMessages from '../components/Game/InteractionMessages';
-import GameOver from '../components/Game/GameOver';
+import Score from '../components/Game/Score/Score';
+import InteractionMessages from '../components/Game/InteractionMessages/InteractionMessages';
+import GameOver from '../components/Game/GameOver/GameOver';
 import '../components/Game/Game.css';
 
 function Game() {
