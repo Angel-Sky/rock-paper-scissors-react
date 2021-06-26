@@ -12,41 +12,23 @@ img {
     width: 30vh;
 }
 
-@media only screen and (max-width: 461px) {
+@media only screen and (max-width: 767px) {
     #start-over-btn {
         margin-bottom: 199px;
     }
-    #root {
-        height: 100%;
+    img {
+        width: 17vh !important;
+    }
+    #user-choices {
+        border-right: none !important;
+        border-bottom: 1px solid white;
+        margin-bottom: 20px;
+        padding-bottom: 30px;
     }
 }
 
-@media only screen and (min-width: 462px) {
-    #root {
-        height: 100vh;
-    }
-    .weapons img {
+@media only screen and (max-width: 1023px) {
+    img {
         width: 20vh;
-    }
-    #btn-start {
-        margin: 60px 0px;
-    } 
-}
-
-@media only screen and (max-width: 768px) {
-    #root {
-        height: 100%;
-    }
-    .weapons img {
-        width: 20vh;
-    }
-    #btn-start {
-        margin: 60px 0px;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .weapons img {
-        width: 30vh;
     }
 }
